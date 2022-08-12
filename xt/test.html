@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script  type="module"  src="XtWeb.js"></script>
+</head>
+<body>
+
+</body>
+<script   type="module" >
+    import XtWeb from "./XtWeb.js";
+
+    var aa = XtWeb.address.toXtAddress('0x8840E6C55B9ADA326D211D818C34A994AECED808')
+    var bb = XtWeb.address.addressToHex(aa)
+    var cc = XtWeb.address.addressHexString(bb)
+
+    console.log(aa);
+    console.log(bb);
+    console.log(cc);
+</script>
+</html>
