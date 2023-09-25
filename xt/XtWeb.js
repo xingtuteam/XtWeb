@@ -8,7 +8,7 @@ export default class XtWeb {
     static get address() {
         return {
             toXtAddress(address) {
-                if (!utils.isHex(address)&&!Number(String(address).length) === 42 )
+                if (!utils.isHex(address)&&Number(String(address).length) !== 42 )
                     return address;
                 return utils.crypto.getBase58CheckAddress(
                     utils.code.hexStr2byteArray(address.replace(/^0x/, ADDRESS_PREFIX))
