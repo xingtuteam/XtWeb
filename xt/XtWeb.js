@@ -8,9 +8,8 @@ export default class XtWeb {
     static get address() {
         return {
             toXtAddress(address) {
-                if (!utils.isHex(address))
+                if (!utils.isHex(address)&&Number(value.length) === 42 )
                     return address;
-
                 return utils.crypto.getBase58CheckAddress(
                     utils.code.hexStr2byteArray(address.replace(/^0x/, ADDRESS_PREFIX))
                 );
@@ -18,7 +17,6 @@ export default class XtWeb {
             addressHexString(address) {
                 if (utils.isHex(address))
                     return address.toLowerCase().replace(/^0x/, ADDRESS_PREFIX);
-
                 return utils.code.byteArray2hexStr(
                     utils.crypto.decodeBase58Address(address)
                 ).toLowerCase();
@@ -31,7 +29,10 @@ export default class XtWeb {
                 }
             },
             addressToHex(value) {
-                return this.addressHexString(value).replace(ADDRESS_PREFIX_REGEX, '0x');
+                if (Number(value.length) === 35 && String(value.slice(0, 2)) === 'X1')
+                    return this.addressHexString(value).replace(ADDRESS_PREFIX_REGEX, '0x');
+                return value;
+
             }
         }
     }
